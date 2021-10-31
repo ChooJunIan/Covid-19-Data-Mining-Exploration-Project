@@ -192,7 +192,7 @@ st.altair_chart(vax_my.mark_line(color='firebrick'))
 # Dropbox
 # ---------------
 
-cty = st.selectbox("Select state",cases_state["state"][:16])
+# cty = st.selectbox("Select state",cases_state["state"][:16])
 
 
 st.subheader('Cumulutive vaccine given by state')
@@ -241,11 +241,81 @@ bar1 = alt.Chart(df_vax_state_perc).mark_bar().encode(
 
 st.altair_chart(bar1)
 
-bar1 = alt.Chart(df_vax_state_perc).mark_bar().encode(
+bar2 = alt.Chart(df_vax_state_perc).mark_bar().encode(
     x="perc_vax_part",
     y=alt.Y("state",sort="-x"),
     color=alt.Color("state",legend=None),
     tooltip = ['state', "perc_vax_full"]
 ).interactive()
 
-st.altair_chart(bar1)
+st.altair_chart(bar2)
+
+# -------------------------------------------
+# Dropdown for states - show cases, death and bed utilization
+# -------------------------------------------
+
+cty = st.selectbox("Select state",cases_state["state"][:16])
+
+st.subheader(f'Cases in {cty} state')
+
+#cases_state
+cases_state_sel = alt.Chart(cases_state[cases_state['state']==cty]).mark_line().encode(
+    x="date",
+    y="cases_new",
+    tooltip=["date","cases_new"]
+).interactive()
+
+st.altair_chart(cases_state_sel)
+
+
+st.subheader(f'Deaths in {cty} state')
+
+#cases_deaths
+deaths_state_sel = alt.Chart(deaths_state[deaths_state['state']==cty]).mark_line().encode(
+    x="date",
+    y="deaths_new",
+    tooltip=["date","deaths_new"]
+).interactive()
+
+st.altair_chart(deaths_state_sel)
+
+
+st.subheader(f'Beds utilization (%) in {cty} state')
+
+# hospital view
+hospital_view = hospital.copy()
+#hospital_view = hospital_view.groupby('date', as_index=False).sum()
+# hospital_view
+hospital_view['covid_bed_utilization'] = (((hospital_view['hosp_covid']) / hospital_view['beds_covid']) * 100).round(2)
+
+#cases_deaths
+hospital_view_sel = alt.Chart(hospital_view[hospital_view['state']==cty]).mark_line().encode(
+    x="date",
+    y="covid_bed_utilization",
+    tooltip=["date","covid_bed_utilization"]
+).interactive()
+
+st.altair_chart(hospital_view_sel)
+
+st.subheader(f'C(%) in {cty} state')
+
+
+df_vax_state_sel = pd.merge(vax_state[['date', 'state', 'cumul_partial', 'cumul_partial_child', 'cumul_full', 'cumul_full_child']], population[['state', 'pop', 'pop_12']], on='state')
+df_vax_state_sel['perc_vax_full'] = (df_vax_state_sel['cumul_full'] / df_vax_state_sel['pop'] * 100).round(2)
+df_vax_state_sel['perc_vax_part'] = (df_vax_state_sel['cumul_partial'] / df_vax_state_sel['pop'] * 100).round(2)
+
+
+st.subheader(f'Percentage of fully vaccinated population in {cty} state')
+rec=alt.Chart(df_vax_state_sel[df_vax_state_sel['state']==cty]).mark_area(color="green").encode(
+    x="date:T",
+    y="perc_vax_full:Q",
+    tooltip=["date","perc_vax_full"]
+).interactive()
+
+st.altair_chart(rec)
+
+polygon = malaysia_map
+map_df = polygon 
+crs = {'init': 'epsg:4326'}
+map_df.to_crs(pyproj.CRS.from_epsg(4326), inplace=True)
+st.map(malaysia_map)
