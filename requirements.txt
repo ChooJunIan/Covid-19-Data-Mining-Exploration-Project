@@ -1,8 +1,8 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: win-64
-_anaconda_depends=2020.07=py38_0
-_ipyw_jlab_nb_ext_conf=0.1.0=py38_0
+#_anaconda_depends=2020.07=py38_0
+#_ipyw_jlab_nb_ext_conf=0.1.0=py38_0
 absl-py=0.14.1=pypi_0
 alabaster=0.7.12=py_0
 altair=4.1.0=py_1
