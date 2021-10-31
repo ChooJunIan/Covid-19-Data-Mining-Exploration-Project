@@ -66,7 +66,7 @@ entrypoints==0.3
 et-xmlfile==1.0.1
 fastcache==1.1.0
 filelock==3.0.12
-Fiona @ file:///C:/Users/user/Downloads/Fiona-1.8.20-cp38-cp38-win_amd64.whl
+# Fiona @ file:///C:/Users/user/Downloads/Fiona-1.8.20-cp38-cp38-win_amd64.whl
 flake8 @ file:///tmp/build/80754af9/flake8_1601911421857/work
 Flask==1.1.2
 flatbuffers==1.12
