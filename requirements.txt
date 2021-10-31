@@ -74,7 +74,7 @@ folium==0.12.1
 fsspec @ file:///tmp/build/80754af9/fsspec_1602684995936/work
 future==0.18.2
 gast==0.4.0
-GDAL @ file:///C:/Users/user/Downloads/GDAL-3.3.1-cp38-cp38-win_amd64.whl
+# GDAL @ file:///C:/Users/user/Downloads/GDAL-3.3.1-cp38-cp38-win_amd64.whl
 geographiclib==1.52
 geopandas==0.9.0
 geopy==2.2.0
