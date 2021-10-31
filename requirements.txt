@@ -1,9 +1,9 @@
 absl-py==0.14.1
 alabaster==0.7.12
 altair==4.1.0
-anaconda-client==1.7.2
-anaconda-navigator==1.10.0
-anaconda-project==0.8.3
+# anaconda-client==1.7.2
+# anaconda-navigator==1.10.0
+# anaconda-project==0.8.3
 apyori==1.1.2
 argh==0.26.2
 argon2-cffi @ file:///C:/ci/argon2-cffi_1596828585465/work
