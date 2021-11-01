@@ -6,7 +6,7 @@ conda create --clone base --name pmdarima_test
 2. Revert statsmodels to version 0.11
 	- if package already installed
 		pip uninstall statsmodels
-		pip install statsmodels=0.11
+		pip install statsmodels==0.11
 
 3. Install cython
 	pip install cython==0.29.18
