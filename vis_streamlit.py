@@ -12,6 +12,7 @@ import datetime as dt
 import descartes
 import geopandas as gpd
 from shapely.geometry import Point, Polygon
+import folium 
 
 
 
@@ -195,23 +196,23 @@ st.altair_chart(vax_my.mark_line(color='firebrick'))
 # cty = st.selectbox("Select state",cases_state["state"][:16])
 
 
-st.subheader('Cumulutive vaccine given by state')
+# st.subheader('Cumulutive vaccine given by state')
 vax_state_trim = vax_state.iloc[-16:]
 vax_state_trim = vax_state_trim.sort_values('cumul_full', ascending=False)
 
 # vax_state_all = latest.sort_values("Confirmed",ascending=False)[["Country","Confirmed"]].head()
 
-# confirm.reset_index(inplace = True,drop = True)
+# # confirm.reset_index(inplace = True,drop = True)
 
-bar1 = alt.Chart(vax_state_trim).mark_bar().encode(
-    x="cumul_full",
-    y=alt.Y("state",sort="-x"),
-    color=alt.Color("state",legend=None),
-    #facet='state:N',
-    tooltip = "cumul_full"
-).interactive()
+# bar1 = alt.Chart(vax_state_trim).mark_bar().encode(
+#     x="cumul_full",
+#     y=alt.Y("state",sort="-x"),
+#     color=alt.Color("state",legend=None),
+#     #facet='state:N',
+#     tooltip = "cumul_full"
+# ).interactive()
 
-st.altair_chart(bar1)
+# st.altair_chart(bar1)
 
 st.subheader('Cumulative Full Vaccination Doses Given in Malaysia')
 rec=alt.Chart(vax_malaysia).mark_area(color="green").encode(
@@ -314,8 +315,10 @@ rec=alt.Chart(df_vax_state_sel[df_vax_state_sel['state']==cty]).mark_area(color=
 
 st.altair_chart(rec)
 
-polygon = malaysia_map
-map_df = polygon 
-crs = {'init': 'epsg:4326'}
-map_df.to_crs(pyproj.CRS.from_epsg(4326), inplace=True)
-st.map(malaysia_map)
+# polygon = malaysia_map
+# map_df = polygon 
+# crs = {'init': 'epsg:4326'}
+# map_df.to_crs(pyproj.CRS.from_epsg(4326), inplace=True)
+# st.map(malaysia_map)
+
+#df_map = gpd.read_file('/random_dataset/malaysia-json/malaysia.geojson')
