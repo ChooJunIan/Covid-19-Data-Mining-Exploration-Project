@@ -1,5 +1,7 @@
 Welcome to our Data Mining Project. 
 
+Prepared by Choo Jun Ian, Hafizi bin Ismail, Maheson Kaliapan
+
 Link to our website: https://tds-3301-sample.herokuapp.com/ 
 
 # Setting up the environment for Jupyter Notebook
