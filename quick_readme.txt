@@ -4,6 +4,8 @@ This jupyter notebook requires pdarima==1.8.0
 conda create --clone base --name pmdarima_test
 
 2. Revert statsmodels to version 0.11
+	- Check package version using 
+		pip show statsmodels
 	- if package already installed
 		pip uninstall statsmodels
 		pip install statsmodels==0.11
